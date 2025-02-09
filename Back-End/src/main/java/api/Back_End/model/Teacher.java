@@ -1,5 +1,7 @@
 package api.Back_End.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Teacher {
 
     @ManyToOne
     @JoinColumn(name = "school_id")
+    @JsonBackReference
     private School school;
 
     // Getters e Setters

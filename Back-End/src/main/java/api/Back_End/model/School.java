@@ -1,5 +1,8 @@
 package api.Back_End.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,12 +19,15 @@ public class School {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
+    @JsonBackReference
     private City city;
 
     @OneToMany(mappedBy = "school")
+    @JsonManagedReference
     private List<Teacher> teachers;
 
     @OneToMany(mappedBy = "school")
+    @JsonManagedReference
     private List<SchoolClass> classes;
 
     public int getSchool_id() {

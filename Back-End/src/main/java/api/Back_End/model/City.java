@@ -2,6 +2,8 @@ package api.Back_End.model;
 
 import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 @Entity
@@ -15,6 +17,7 @@ public class City {
     private String city_name;
 
     @OneToMany(mappedBy = "city")
+    @JsonManagedReference
     private List<School> schools;
 
     public int getCity_id() {
