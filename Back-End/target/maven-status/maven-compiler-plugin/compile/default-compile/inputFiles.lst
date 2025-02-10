@@ -1,0 +1,10 @@
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/BackEndApplication.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/controller/TeacherController.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/dto/TeacherDTO.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/model/City.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/model/School.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/model/SchoolClass.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/model/Student.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/model/Teacher.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/repository/TeacherRepository.java
+/home/lucas/School System Project/Back-End/src/main/java/api/Back_End/service/TeacherService.java
