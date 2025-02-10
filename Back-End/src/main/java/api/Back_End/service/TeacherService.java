@@ -1,31 +1,51 @@
 package api.Back_End.service;
 
+import api.Back_End.dto.TeacherResponseDTO;
+import api.Back_End.exception.InvalidCredentialsException;
+import api.Back_End.exception.TeacherNotFoundException;
 import api.Back_End.model.Teacher;
 import api.Back_End.repository.TeacherRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TeacherService {
+
     @Autowired
     private TeacherRepository teacherRepository;
 
-    public Teacher authenticateTeacher(String name, String password) {
-        // Validação dos parâmetros
-        if (name == null || name.trim().isEmpty() || password == null || password.trim().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name and password are required.");
-        }
-        // Busca o professor no banco de dados
-        Teacher teacher = teacherRepository.findByTeacherNameAndTeacherPassword(name, password);
+    public TeacherResponseDTO authenticateTeacher(String name, String password) throws TeacherNotFoundException {
+        // Busca o professor pelo nome
+        Optional<Teacher> optionalTeacher = teacherRepository.findByTeacherName(name);
 
-        // Verifica se o professor foi encontrado
-        if (teacher == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid name or password.");
+        // Verifica se o professor existe
+        if (optionalTeacher.isEmpty()) {
+            throw new TeacherNotFoundException("O professor " + name + " não existe no sistema.");
         }
 
-        return teacher;
+        Teacher teacher = optionalTeacher.get();
+
+        // Verifica se a senha está correta
+        if (!teacher.getTeacherPassword().equals(password)) {
+            throw new InvalidCredentialsException("A senha inserida está incorreta.");
+        }
+
+        // Mapeia os dados do Teacher para o DTO
+        return new TeacherResponseDTO(
+                teacher.getTeacherName(),
+                teacher.getSchool().getCity().getCity_name(),
+                teacher.getSchool().getSchool_name(),
+                teacher.getSchool().getClasses().stream()
+                        .map(classe -> new TeacherResponseDTO.ClassInfo(
+                                classe.getClass_name(),
+                                classe.getStudents().stream()
+                                        .map(student -> student.getStudent_name())
+                                        .collect(Collectors.toList())
+                        ))
+                        .collect(Collectors.toList())
+        );
     }
 }
