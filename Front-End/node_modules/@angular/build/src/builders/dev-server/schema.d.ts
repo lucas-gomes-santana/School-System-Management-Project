@@ -3,8 +3,8 @@
  */
 export type Schema = {
     /**
-     * The hosts that can access the development server. This option sets the Vite option of the
-     * same name. For further details:
+     * The hosts that the development server will respond to. This option sets the Vite option
+     * of the same name. For further details:
      * https://vite.dev/config/server-options.html#server-allowedhosts
      */
     allowedHosts?: AllowedHosts;
@@ -86,8 +86,8 @@ export type Schema = {
     watch?: boolean;
 };
 /**
- * The hosts that can access the development server. This option sets the Vite option of the
- * same name. For further details:
+ * The hosts that the development server will respond to. This option sets the Vite option
+ * of the same name. For further details:
  * https://vite.dev/config/server-options.html#server-allowedhosts
  */
 export type AllowedHosts = string[] | boolean;

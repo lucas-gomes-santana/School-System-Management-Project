@@ -23,10 +23,8 @@ public class Teacher {
     @JsonBackReference
     private School school;
 
-    // Getters e Setters
-    public int getTeacher_id() {
-        return teacher_id;
-    }
+    // Getters and Setters
+    public int getTeacher_id() { return teacher_id; }
 
     public void setTeacher_id(int teacher_id) {
         this.teacher_id = teacher_id;

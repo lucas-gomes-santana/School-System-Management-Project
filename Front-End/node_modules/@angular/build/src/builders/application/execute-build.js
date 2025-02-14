@@ -148,7 +148,6 @@ async function executeBuild(options, context, rebuildState) {
     }
     const { metafile, initialFiles, outputFiles } = bundlingResult;
     executionResult.outputFiles.push(...outputFiles);
-    const changedFiles = rebuildState && executionResult.findChangedFiles(rebuildState.previousOutputInfo);
     // Analyze files for bundle budget failures if present
     let budgetFailures;
     if (options.budgets) {
@@ -218,6 +217,7 @@ async function executeBuild(options, context, rebuildState) {
         executionResult.addOutputFile('stats.json', JSON.stringify(metafile, null, 2), bundler_context_1.BuildOutputFileType.Root);
     }
     if (!jsonLogs) {
+        const changedFiles = rebuildState && executionResult.findChangedFiles(rebuildState.previousOutputInfo);
         executionResult.addLog((0, utils_1.logBuildStats)(metafile, outputFiles, initialFiles, budgetFailures, colors, changedFiles, estimatedTransferSizes, !!ssrOptions, verbose));
     }
     return executionResult;
