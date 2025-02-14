@@ -15,63 +15,41 @@ public class TeacherResponseDTO {
         this.classes = classes;
     }
 
-    public String getTeacherName() {
-        return teacherName;
-    }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
-    }
+    //Getters and Setters
+    public String getTeacherName() { return teacherName; }
 
-    public String getCityName() {
-        return cityName;
-    }
+    public void setTeacherName(String teacherName) { this.teacherName = teacherName; }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
+    public String getCityName() { return cityName; }
 
-    public String getSchoolName() {
-        return schoolName;
-    }
+    public void setCityName(String cityName) { this.cityName = cityName; }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
+    public String getSchoolName() { return schoolName; }
 
-    public List<ClassInfo> getClasses() {
-        return classes;
-    }
+    public void setSchoolName(String schoolName) { this.schoolName = schoolName; }
 
-    public void setClasses(List<ClassInfo> classes) {
-        this.classes = classes;
-    }
+    public List<ClassInfo> getClasses() { return classes; }
 
-    // Classe interna para representar as turmas e seus alunos
+    public void setClasses(List<ClassInfo> classes) { this.classes = classes; }
+
+    //Intern class who represents the classes and your students
     public static class ClassInfo {
         private String className;
         private List<String> students;
 
-        // Construtor
+        // Constructor
         public ClassInfo(String className, List<String> students) {
             this.className = className;
             this.students = students;
         }
 
-        public String getClassName() {
-            return className;
-        }
+        public String getClassName() { return className; }
 
-        public void setClassName(String className) {
-            this.className = className;
-        }
+        public void setClassName(String className) { this.className = className; }
 
-        public List<String> getStudents() {
-            return students;
-        }
+        public List<String> getStudents() { return students; }
 
-        public void setStudents(List<String> students) {
-            this.students = students;
-        }
+        public void setStudents(List<String> students) { this.students = students; }
     }
 }

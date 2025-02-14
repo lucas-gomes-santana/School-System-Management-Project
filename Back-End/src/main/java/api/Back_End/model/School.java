@@ -30,6 +30,8 @@ public class School {
     @JsonManagedReference
     private List<SchoolClass> classes;
 
+
+    //Getters and Setters
     public int getSchool_id() {
         return school_id;
     }

@@ -18,22 +18,22 @@ public class TeacherService {
     private TeacherRepository teacherRepository;
 
     public TeacherResponseDTO authenticateTeacher(String name, String password) throws TeacherNotFoundException {
-        // Busca o professor pelo nome
+        // Search for a teacher by name
         Optional<Teacher> optionalTeacher = teacherRepository.findByTeacherName(name);
 
-        // Verifica se o professor existe
+        // Verify if the teacher exists
         if (optionalTeacher.isEmpty()) {
             throw new TeacherNotFoundException("O professor " + name + " não existe no sistema.");
         }
 
         Teacher teacher = optionalTeacher.get();
 
-        // Verifica se a senha está correta
+        // Verify if the password is correct
         if (!teacher.getTeacherPassword().equals(password)) {
             throw new InvalidCredentialsException("A senha inserida está incorreta.");
         }
 
-        // Mapeia os dados do Teacher para o DTO
+        //Maps teacher data to DTO
         return new TeacherResponseDTO(
                 teacher.getTeacherName(),
                 teacher.getSchool().getCity().getCity_name(),

@@ -21,35 +21,21 @@ public class SchoolClass {
     @OneToMany(mappedBy = "studentClass")
     private List<Student> students;
 
-    public int getClass_id() {
-        return class_id;
-    }
 
-    public void setClass_id(int class_id) {
-        this.class_id = class_id;
-    }
+    //Getters and Setters
+    public int getClass_id() { return class_id; }
 
-    public String getClass_name() {
-        return class_name;
-    }
+    public void setClass_id(int class_id) { this.class_id = class_id; }
 
-    public void setClass_name(String class_name) {
-        this.class_name = class_name;
-    }
+    public String getClass_name() { return class_name; }
 
-    public School getSchool() {
-        return school;
-    }
+    public void setClass_name(String class_name) { this.class_name = class_name; }
 
-    public void setSchool(School school) {
-        this.school = school;
-    }
+    public School getSchool() { return school; }
 
-    public List<Student> getStudents() {
-        return students;
-    }
+    public void setSchool(School school) { this.school = school; }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
+    public List<Student> getStudents() { return students; }
+
+    public void setStudents(List<Student> students) { this.students = students; }
 }

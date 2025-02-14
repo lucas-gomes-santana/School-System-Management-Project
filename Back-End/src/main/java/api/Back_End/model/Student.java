@@ -17,6 +17,7 @@ public class Student {
     private SchoolClass studentClass;
 
 
+    //Getters and Setters
     public int getStudent_id() {
         return student_id;
     }
