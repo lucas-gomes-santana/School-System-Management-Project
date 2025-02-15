@@ -1,1 +1,15 @@
-<p>students-list works!</p>
+<section class="students-list-container">
+  <h2>Bem-vindo, {{ teacherData?.teacherName }}!</h2>
+
+  <div class="school-info">
+    <p><strong>Escola:</strong> {{ teacherData?.schoolName }}</p>
+    <p><strong>Cidade:</strong> {{ teacherData?.cityName }}</p>
+  </div>
+
+  <div *ngFor="let class of teacherData?.classes" class="class-container">
+    <h3>{{ class.className }}</h3>
+    <ul>
+      <li *ngFor="let student of class.students">{{ student }}</li>
+    </ul>
+  </div>
+</section>

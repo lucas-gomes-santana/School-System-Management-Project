@@ -1,43 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface Teacher {
-  name: string;
-  school: string;
-  city: string;
-  classes: {
-    className: string;
-    students: string[];
-  }[];
-}
+import { TeacherResponseDTO } from '../dto/teacher-response.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8080/api/teachers/login'; // URL of the API
+  private apiUrl = 'http://localhost:8080/api/teachers'; // URL da API
 
   constructor(private http: HttpClient) { }
 
-  // Login method
-  login(credentials: { username: string, password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+  // Método para fazer login (envia dados como application/x-www-form-urlencoded)
+  login(credentials: { name: string, password: string }): Observable<TeacherResponseDTO> {
+    const body = new HttpParams()
+      .set('name', credentials.name)
+      .set('password', credentials.password);
+
+    return this.http.post<TeacherResponseDTO>(`${this.apiUrl}/login`, body.toString(), {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    });
   }
 
-  // Method to register a user
-  register(userData: { username: string, password: string, email: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, userData);
+  // Método para verificar se o usuário está autenticado (envia dados como application/x-www-form-urlencoded)
+  isAuthenticated(): Observable<{ authenticated: boolean }> {
+    const token = localStorage.getItem('authToken'); // Exemplo de como obter o token
+    const body = new HttpParams().set('token', token || '');
+
+    return this.http.post<{ authenticated: boolean }>(`${this.apiUrl}/check-auth`, body.toString(), {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    });
   }
 
-  // Method to verify if the user is authenticated
-  isAuthenticated(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/check-auth`);
-  }
-
-   // Método para buscar os dados do professor
-   getTeacherData(): Observable<Teacher> {
-    return this.http.get<Teacher>(`${this.apiUrl}/teacher-data`);
+  // Método para buscar os dados do professor
+  getTeacherData(): Observable<TeacherResponseDTO> {
+    return this.http.get<TeacherResponseDTO>(`${this.apiUrl}/teacher-data`);
   }
 }

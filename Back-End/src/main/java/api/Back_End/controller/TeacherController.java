@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/teachers")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true", allowedHeaders = "*") // Allow requisitions made by the Front-End of the application
 public class TeacherController {
 
     @Autowired
@@ -22,9 +23,7 @@ public class TeacherController {
         try {
             TeacherResponseDTO response = teacherService.authenticateTeacher(name, password);
             return ResponseEntity.ok(response);
-        } catch (TeacherNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-        } catch (InvalidCredentialsException e) {
+        } catch (TeacherNotFoundException | InvalidCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }

@@ -1,28 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service'; // Importe o AuthService
-import { Router } from '@angular/router'; // Importe o Router para redirecionamento
-
-interface Teacher {
-  name: string;
-  school: string;
-  city: string;
-  classes: {
-    className: string;
-    students: string[];
-  }[];
-}
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { TeacherResponseDTO } from '../../../../dto/teacher-response.dto';
 
 @Component({
   selector: 'app-students-list',
   templateUrl: './students-list.component.html',
-  styleUrls: ['./students-list.component.scss']
+  styleUrls: ['./students-list.component.scss'],
+  imports: [CommonModule],
 })
 export class StudentsListComponent implements OnInit {
-  teacherData: Teacher | null = null; // Dados do professor
-  isLoading: boolean = true; // Estado de carregamento
-  errorMessage: string | null = null; // Mensagem de erro
+  teacherData: TeacherResponseDTO | null = null; // Use TeacherResponseDTO
+  isLoading: boolean = true;
+  errorMessage: string | null = null;
 
-  // Injete o AuthService e o Router no construtor
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -48,14 +40,15 @@ export class StudentsListComponent implements OnInit {
   // Método para buscar os dados do professor
   fetchTeacherData(): void {
     this.authService.getTeacherData().subscribe({
-      next: (data: Teacher) => {
+      next: (data: TeacherResponseDTO) => {
+        console.log('Dados do professor:', data); // Log para depuração
         this.teacherData = data;
         this.isLoading = false;
       },
       error: (error) => {
+        console.error('Erro ao buscar dados do professor:', error); // Log para depuração
         this.isLoading = false;
         this.errorMessage = 'Erro ao carregar dados do professor. Tente novamente.';
-        console.error('Erro ao buscar dados do professor:', error);
       }
     });
   }
