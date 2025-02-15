@@ -1,7 +1,11 @@
-.main-container{
+@mixin flexColumn(){
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.main-container{
+  @include flexColumn();
   margin-top: 100px;
 
   h3{
@@ -10,39 +14,47 @@
     margin-bottom: 10px;
   }
 
-  .container-login{
-    margin-top: 20px;
-
-    label{
-      font-size: 1.2rem;
-    }
-
-    input{
-      text-align: center;
-      padding: 3px;
-      border-radius: 20px;
-      font-size: 1.1rem;
-      border: 1px solid;
-    }
+  label{
+    font-size: 1.2rem;
   }
 
-  button{
+  .error-message{
     margin-top: 30px;
-    padding: 6px;
-    font-size: 1.2rem;
-    border-radius: 15px;
-    border: 1px solid;
+  }
 
-    &:hover{
-      transform: scale(1.08);
-      transition: transform 0.3s ease-in-out;
-      cursor: pointer;
-      background-color: blue;
+  form{
+    @include flexColumn();
+
+    .container-login{
+      margin-top: 20px;
+
+      input{
+        text-align: center;
+        padding: 3px;
+        border-radius: 20px;
+        font-size: 1.1rem;
+        border: 1px solid;
+      }
     }
 
-    &:active{
-      opacity: 70%;
-      background-color: green;
+    button{
+      margin-top: 30px;
+      padding: 6px;
+      font-size: 1.2rem;
+      border-radius: 15px;
+      border: 1px solid;
+
+      &:hover{
+        transform: scale(1.08);
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+        background-color: blue;
+      }
+
+      &:active{
+        opacity: 70%;
+        background-color: green;
+      }
     }
   }
 }

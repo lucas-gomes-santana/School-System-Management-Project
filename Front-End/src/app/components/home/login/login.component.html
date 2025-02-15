@@ -2,16 +2,22 @@
 
   <h3>Olá,Sr.Professor,insira as informações requisitadas abaixo para obter acesso ao sistema.</h3>
 
-  <div class="container-login">
-    <label for="">Digite o seu nome: </label>
-    <input type="text" placeholder="Seu nome aqui" required>
-  </div>
+  <form (ngSubmit)="onLogin()">
 
-  <div class="container-login">
-    <label for="">Digite a sua senha: </label>
-    <input type="password" placeholder="Sua senha aqui" required>
-  </div>
+    <div class="container-login">
+      <label for="name">Digite o seu nome: </label>
+      <input type="text" placeholder="Seu nome aqui" required [(ngModel)]="name" name="username">
+    </div>
 
-  <button>Fazer login</button>
+    <div class="container-login">
+      <label for="password">Digite a sua senha: </label>
+      <input type="password" placeholder="Sua senha aqui" required [(ngModel)]="password" name="password">
+    </div>
+
+    <button type="submit">Fazer login</button>
+
+  </form>
+
+  <label *ngIf="errorMessage" class="error-message">{{ errorMessage }}</label>
 
 </section>
