@@ -28,7 +28,7 @@ export class LoginComponent {
         // Verifica se a resposta contém os dados do professor
         if (response && response.teacherName) {
           console.log('Dados do professor após login:', response); // Log para depuração
-          localStorage.setItem('teacherData', JSON.stringify(response)); // Armazena os dados no localStorage
+          localStorage.setItem('teacherName', response.teacherName); // Armazena o nome do professor
           this.router.navigate(['/students-list']); // Redireciona para a página de lista de alunos
         } else {
           this.errorMessage = 'Nome ou senha incorretos. Tente novamente.';

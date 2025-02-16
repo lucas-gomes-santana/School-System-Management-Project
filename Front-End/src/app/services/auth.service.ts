@@ -33,8 +33,8 @@ export class AuthService {
     });
   }
 
-  // Método para buscar os dados do professor
-  getTeacherData(): Observable<TeacherResponseDTO> {
-    return this.http.get<TeacherResponseDTO>(`${this.apiUrl}/teacher-data`);
+  getTeacherData(name: string): Observable<TeacherResponseDTO> {
+    const params = new HttpParams().set('name', name);
+    return this.http.get<TeacherResponseDTO>(`${this.apiUrl}/teacher-data`, { params });
   }
 }

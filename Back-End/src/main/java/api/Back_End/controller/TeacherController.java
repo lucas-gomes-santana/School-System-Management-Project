@@ -10,9 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/teachers")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true", allowedHeaders = "*") // Allow requisitions made by the Front-End of the application
 public class TeacherController {
 
     @Autowired
@@ -25,6 +26,23 @@ public class TeacherController {
             return ResponseEntity.ok(response);
         } catch (TeacherNotFoundException | InvalidCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/check-auth")
+    public ResponseEntity<?> checkAuth(@RequestParam String token) {
+        // Lógica para verificar se o token é válido
+        boolean isAuthenticated = true; // Substitua por sua lógica de autenticação
+        return ResponseEntity.ok().body(Map.of("authenticated", isAuthenticated));
+    }
+
+    @GetMapping("/teacher-data")
+    public ResponseEntity<?> getTeacherData(@RequestParam String name) {
+        try {
+            TeacherResponseDTO response = teacherService.getTeacherData(name);
+            return ResponseEntity.ok(response);
+        } catch (TeacherNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 }

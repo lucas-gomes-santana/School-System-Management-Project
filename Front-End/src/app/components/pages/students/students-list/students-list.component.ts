@@ -39,17 +39,23 @@ export class StudentsListComponent implements OnInit {
 
   // Método para buscar os dados do professor
   fetchTeacherData(): void {
-    this.authService.getTeacherData().subscribe({
-      next: (data: TeacherResponseDTO) => {
-        console.log('Dados do professor:', data); // Log para depuração
-        this.teacherData = data;
-        this.isLoading = false;
-      },
-      error: (error) => {
-        console.error('Erro ao buscar dados do professor:', error); // Log para depuração
-        this.isLoading = false;
-        this.errorMessage = 'Erro ao carregar dados do professor. Tente novamente.';
-      }
-    });
+    const teacherName = localStorage.getItem('teacherName'); // Obtém o nome do professor do localStorage
+    if (teacherName) {
+      this.authService.getTeacherData(teacherName).subscribe({
+        next: (data: TeacherResponseDTO) => {
+          console.log('Dados do professor:', data); // Log para depuração
+          this.teacherData = data;
+          this.isLoading = false;
+        },
+        error: (error) => {
+          console.error('Erro ao buscar dados do professor:', error); // Log para depuração
+          this.isLoading = false;
+          this.errorMessage = 'Erro ao carregar dados do professor. Tente novamente.';
+        }
+      });
+    } else {
+      this.errorMessage = 'Nome do professor não encontrado.';
+      this.isLoading = false;
+    }
   }
 }
