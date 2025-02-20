@@ -19,6 +19,7 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+<<<<<<< HEAD
   // Método para fazer login
   onLogin(): void {
     this.errorMessage = null; // Limpa mensagens de erro anteriores
@@ -42,6 +43,31 @@ export class LoginComponent {
           this.errorMessage = 'Nome ou senha incorretos. Tente novamente.';
         } else {
           this.errorMessage = 'Erro ao tentar fazer login. Tente novamente mais tarde.';
+=======
+  // Login method
+  onLogin(): void {
+    this.errorMessage = null;
+
+    this.authService.login({ name: this.name, password: this.password }).subscribe({
+      next: (response: TeacherResponseDTO) => {
+        // Verify if the response contains the name of the teacher
+        if (response && response.teacherName) {
+          console.log('Teacher data after login:', response); // Log for depuration
+          localStorage.setItem('teacherName', response.teacherName); // Storage teacher name
+          this.router.navigate(['/students-list']); // Redireciona para a página de lista de alunos
+        } else {
+          this.errorMessage = 'Name or password incorrect.Try again';
+        }
+      },
+      error: (error) => {
+        console.error('Login error:', error); // Log for depuration
+        if (error.status === 0) {
+          this.errorMessage = 'Server connection error.';
+        } else if (error.status === 401) {
+          this.errorMessage = 'Name or password incorrect. Insert the correct dates';
+        } else {
+          this.errorMessage = 'Error on login attempt. Try again later.';
+>>>>>>> Test-Branch
         }
       }
     });
