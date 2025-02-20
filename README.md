@@ -1,8 +1,5 @@
 <h1>School System Project (English Translation)</h1>
 
-<img width="150px" src="https://static.vecteezy.com/system/resources/thumbnails/004/641/880/small_2x/illustration-of-high-school-building-school-building-free-vector.jpg">  
-
-<hr>
 
 <h3>What is this project ?</h3>
 
@@ -10,13 +7,13 @@
 
 <hr>
 
-<h3>Why you make this project ?</h3>
+<h3>Why i make this project ?</h3>
 
 <p>As a Brazilian high school student, I saw teachers' complaints several times about the system that my school uses. My interest in software development awoke during my IT technical course at the school where I am currently studying. So, I had this project idea, so I could learn more about how full-stack programming works.</p>
 
 <hr>
 
-<h3>Technologies used here:</h3>
+<h3>Technologies used here :</h3>
 
 <ul>
     <li>Angular Framework</li>
@@ -29,91 +26,35 @@
 
 <hr>
 
-<h3>How i can contribute to this project ?</h3>
+<h3>How i contribute to this project ?</h3>
 
-<p>1- Fork this repository,copy the link of the fork and clone the project in your computer</p>
 
-<p>2- Copy and paste the SQL code below in your MySQL Workbanch to create the database of the system: </p>
+<ol>
+    <li>Fork this repository,copy the link of the fork and clone the project in your computer .</li>
+    <br>
+    <li>Copy and paste the SQL code in the Data file inside of the database directory in your MySQL Workbanch to create the database of the system .</li>
+    <br>
+    <li>Go to Back-End folder and run the API founding the main Java class on Back-End folder .</li>
+    <br>
+    <li>Go to Front-End folder and run the Angular Front-End with the comand : <pre> ng serve </pre> </li>
+    <br>
+    <li>Test the codes and decide what modifications you will do to make a Pull Request to the original repository .</li>
+</ol>
 
-```sql
--- Criação do banco de dados
-CREATE DATABASE SchoolSystem;
-USE SchoolSystem;
+<hr>
 
--- Tabela de Cidades
-CREATE TABLE Cities (
-    city_id INT AUTO_INCREMENT PRIMARY KEY,
-    city_name VARCHAR(100) NOT NULL UNIQUE
-);
+<h3>Contrubition Rules</h3>
 
--- Tabela de Escolas
-CREATE TABLE Schools (
-    school_id INT AUTO_INCREMENT PRIMARY KEY,
-    school_name VARCHAR(100) NOT NULL UNIQUE,
-    city_id INT,
-    FOREIGN KEY (city_id) REFERENCES Cities(city_id)
-);
+<h4>Please follow the rules of contribution bellow to increase the chances of your Pull Request get accepted : </h4>
 
--- Tabela de Professores
-CREATE TABLE Teachers (
-    teacher_id INT AUTO_INCREMENT PRIMARY KEY,
-    teacher_name VARCHAR(100) NOT NULL,
-    teacher_password VARCHAR(100) NOT NULL UNIQUE,
-    school_id INT,
-    FOREIGN KEY (school_id) REFERENCES Schools(school_id)
-);
+<ul>
+    <li>Keep the code variables and the coments on english languague .</li>
+    <br>
+    <li>If you want make modifications in database structure,open a issue in this repository to contact me . Because will be needed make changes in the API and Angular codes to .</li>
+    <br>
+    <li>If you create new Angular components,delete the spec files . It's not a so complex project,so,i prefer to no work with unitatry tests here . And I don't want the Front-End folder to have too many files.</li>
+</ul>
 
--- Tabela de Turmas
-CREATE TABLE Classes (
-    class_id INT AUTO_INCREMENT PRIMARY KEY,
-    class_name VARCHAR(100) NOT NULL,
-    school_id INT,
-    FOREIGN KEY (school_id) REFERENCES Schools(school_id)
-);
+<hr>
 
--- Tabela de Alunos
-CREATE TABLE Students (
-    student_id INT AUTO_INCREMENT PRIMARY KEY,
-    student_name VARCHAR(100) NOT NULL,
-    class_id INT,
-    FOREIGN KEY (class_id) REFERENCES Classes(class_id)
-);
-
--- Inserção de dados iniciais
-INSERT INTO Cities (city_name) VALUES ('Salvador'), ('Feira de Santana');
-
--- Inserção de escolas
-INSERT INTO Schools (school_name, city_id) VALUES
-('Escola A', 1), ('Escola B', 1), ('Escola C', 2), ('Escola D', 2);
-
--- Inserção de professores (senhas geradas aleatoriamente)
-INSERT INTO Teachers (teacher_name, teacher_password, school_id) VALUES
-('Professor 1', 'senha123', 1), ('Professor 2', 'senha456', 1),
-('Professor 3', 'senha789', 2), ('Professor 4', 'senha101', 2),
-('Professor 5', 'senha112', 3), ('Professor 6', 'senha131', 3),
-('Professor 7', 'senha415', 4), ('Professor 8', 'senha161', 4);
-
--- Inserção de turmas
-INSERT INTO Classes (class_name, school_id) VALUES
-('Turma Matutino', 1), ('Turma Vespertino', 1), ('Turma Noturna', 1),
-('Turma Matutino', 2), ('Turma Vespertino', 2), ('Turma Noturna', 2),
-('Turma Matutino', 3), ('Turma Vespertino', 3), ('Turma Noturna', 3),
-('Turma Matutino', 4), ('Turma Vespertino', 4), ('Turma Noturna', 4);
-
--- Inserção de alunos (nomes aleatórios)
-INSERT INTO Students (student_name, class_id) VALUES
-('Aluno 1', 1), ('Aluno 2', 1), ('Aluno 3', 1), ('Aluno 4', 1), ('Aluno 5', 1),
-('Aluno 6', 2), ('Aluno 7', 2), ('Aluno 8', 2), ('Aluno 9', 2), ('Aluno 10', 2),
-('Aluno 11', 3), ('Aluno 12', 3), ('Aluno 13', 3), ('Aluno 14', 3), ('Aluno 15', 3),
-('Aluno 16', 4), ('Aluno 17', 4), ('Aluno 18', 4), ('Aluno 19', 4), ('Aluno 20', 4),
-('Aluno 21', 5), ('Aluno 22', 5), ('Aluno 23', 5), ('Aluno 24', 5), ('Aluno 25', 5),
-('Aluno 26', 6), ('Aluno 27', 6), ('Aluno 28', 6), ('Aluno 29', 6), ('Aluno 30', 6),
-('Aluno 31', 7), ('Aluno 32', 7), ('Aluno 33', 7), ('Aluno 34', 7), ('Aluno 35', 7),
-('Aluno 36', 8), ('Aluno 37', 8), ('Aluno 38', 8), ('Aluno 39', 8), ('Aluno 40', 8),
-('Aluno 41', 9), ('Aluno 42', 9), ('Aluno 43', 9), ('Aluno 44', 9), ('Aluno 45', 9),
-('Aluno 46', 10), ('Aluno 47', 10), ('Aluno 48', 10), ('Aluno 49', 10), ('Aluno 50', 10),
-('Aluno 51', 11), ('Aluno 52', 11), ('Aluno 53', 11), ('Aluno 54', 11), ('Aluno 55', 11),
-('Aluno 56', 12), ('Aluno 57', 12), ('Aluno 58', 12), ('Aluno 59', 12), ('Aluno 60', 12);
-```
-
-<p></p>
+<h3>Tradução deste conteúdo para português brasileiro chegando em breve !</h3>

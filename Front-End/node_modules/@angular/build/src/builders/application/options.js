@@ -236,8 +236,16 @@ async function normalizeOptions(context, projectName, options, extensions) {
             throw new Error('The "index" option cannot be set to false when enabling "ssr", "prerender" or "app-shell".');
         }
     }
+    const autoCsp = options.security?.autoCsp;
+    const security = {
+        autoCsp: autoCsp
+            ? {
+                unsafeEval: autoCsp === true ? false : !!autoCsp.unsafeEval,
+            }
+            : undefined,
+    };
     // Initial options to keep
-    const { allowedCommonJsDependencies, aot = true, baseHref, crossOrigin, externalDependencies, extractLicenses, inlineStyleLanguage = 'css', outExtension, serviceWorker, poll, polyfills, statsJson, outputMode, stylePreprocessorOptions, subresourceIntegrity, verbose, watch, progress = true, externalPackages, namedChunks, budgets, deployUrl, clearScreen, define, partialSSRBuild = false, externalRuntimeStyles, instrumentForCoverage, security, } = options;
+    const { allowedCommonJsDependencies, aot = true, baseHref, crossOrigin, externalDependencies, extractLicenses, inlineStyleLanguage = 'css', outExtension, serviceWorker, poll, polyfills, statsJson, outputMode, stylePreprocessorOptions, subresourceIntegrity, verbose, watch, progress = true, externalPackages, namedChunks, budgets, deployUrl, clearScreen, define, partialSSRBuild = false, externalRuntimeStyles, instrumentForCoverage, } = options;
     // Return all the normalized options
     return {
         advancedOptimizations: !!aot && optimizationOptions.scripts,

@@ -18,43 +18,41 @@ export class StudentsListComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    // Verifica se o professor está autenticado
+    // Verify if the teacher is authenticated
     this.authService.isAuthenticated().subscribe({
       next: (response) => {
         if (response.authenticated) {
-          // Se autenticado, busca os dados do professor
           this.fetchTeacherData();
         } else {
-          // Se não autenticado, redireciona para a página de login
           this.router.navigate(['/login']);
         }
       },
       error: (error) => {
         this.isLoading = false;
-        this.errorMessage = 'Erro ao verificar autenticação. Tente novamente.';
-        console.error('Erro ao verificar autenticação:', error);
+        this.errorMessage = 'Error in authentication. Try again.';
+        console.error('Error in authentication verify:', error);
       }
     });
   }
 
-  // Método para buscar os dados do professor
+  // Method to search the teacher data
   fetchTeacherData(): void {
-    const teacherName = localStorage.getItem('teacherName'); // Obtém o nome do professor do localStorage
+    const teacherName = localStorage.getItem('teacherName'); // Gets the teacher name
     if (teacherName) {
       this.authService.getTeacherData(teacherName).subscribe({
         next: (data: TeacherResponseDTO) => {
-          console.log('Dados do professor:', data); // Log para depuração
+          console.log('Teacher data:', data); // Log for depuration
           this.teacherData = data;
           this.isLoading = false;
         },
         error: (error) => {
-          console.error('Erro ao buscar dados do professor:', error); // Log para depuração
+          console.error('Error in teacher data search:', error); // Log for depuration
           this.isLoading = false;
-          this.errorMessage = 'Erro ao carregar dados do professor. Tente novamente.';
+          this.errorMessage = 'Error to load teacher data. Try again.';
         }
       });
     } else {
-      this.errorMessage = 'Nome do professor não encontrado.';
+      this.errorMessage = 'Name of the teacher not found.';
       this.isLoading = false;
     }
   }

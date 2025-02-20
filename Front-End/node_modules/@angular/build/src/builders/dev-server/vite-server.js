@@ -82,6 +82,10 @@ async function* serveWithVite(serverOptions, builderName, builderAction, context
         browserOptions.prerender = undefined;
         browserOptions.ssr ||= true;
     }
+    // Disable auto CSP.
+    browserOptions.security = {
+        autoCsp: false,
+    };
     // Set all packages as external to support Vite's prebundle caching
     browserOptions.externalPackages = serverOptions.prebundle;
     // Disable generating a full manifest with routes.
