@@ -17,13 +17,28 @@ yarn-error.log*
 
 # IDE directories
 .idea/
-.vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
-# Operational System directories
+# Miscellaneous
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
 .DS_Store
 Thumbs.db
 
