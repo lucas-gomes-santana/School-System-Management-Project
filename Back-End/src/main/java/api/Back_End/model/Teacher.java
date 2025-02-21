@@ -12,10 +12,10 @@ public class Teacher {
     @Column(name = "teacher_id")
     private int teacher_id;
 
-    @Column(name = "teacher_name") // Mapeia para a coluna "teacher_name" no banco de dados
+    @Column(name = "teacher_name")
     private String teacherName;
 
-    @Column(name = "teacher_password") // Mapeia para a coluna "teacher_password" no banco de dados
+    @Column(name = "teacher_password")
     private String teacherPassword;
 
     @ManyToOne

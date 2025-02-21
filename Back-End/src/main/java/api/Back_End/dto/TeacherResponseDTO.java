@@ -44,6 +44,7 @@ public class TeacherResponseDTO {
             this.students = students;
         }
 
+        // Getters and Setters
         public String getClassName() { return className; }
 
         public void setClassName(String className) { this.className = className; }

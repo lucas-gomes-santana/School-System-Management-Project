@@ -1,20 +1,20 @@
 <section class="main-container">
 
-  <h3>Olá,Sr.Professor,insira as informações requisitadas abaixo para obter acesso ao sistema.</h3>
+  <h3>Hello teacher!Insert your dates bellow to obtain acess to the system</h3>
 
   <form (ngSubmit)="onLogin()">
 
     <div class="container-login">
-      <label for="name">Digite o seu nome: </label>
-      <input type="text" placeholder="Seu nome aqui" required [(ngModel)]="name" name="username">
+      <label for="name">Enter your name: </label>
+      <input type="text" placeholder="Your name here" required [(ngModel)]="name" name="username">
     </div>
 
     <div class="container-login">
-      <label for="password">Digite a sua senha: </label>
-      <input type="password" placeholder="Sua senha aqui" required [(ngModel)]="password" name="password">
+      <label for="password">Enter your password: </label>
+      <input type="password" placeholder="Your password here" required [(ngModel)]="password" name="password">
     </div>
 
-    <button type="submit">Fazer login</button>
+    <button type="submit">Make Login</button>
 
   </form>
 

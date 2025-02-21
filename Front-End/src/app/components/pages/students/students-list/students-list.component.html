@@ -1,9 +1,9 @@
 <section class="students-list-container">
-  <h3>Bem-vindo, {{ teacherData?.teacherName }}!</h3>
+  <h3>Wellcome, {{ teacherData?.teacherName }}!</h3>
 
   <div class="school-info">
-    <p><strong>Escola:</strong> {{ teacherData?.schoolName }}</p>
-    <p><strong>Cidade:</strong> {{ teacherData?.cityName }}</p>
+    <p><strong>School:</strong> {{ teacherData?.schoolName }}</p>
+    <p><strong>City:</strong> {{ teacherData?.cityName }}</p>
   </div>
 
   <div *ngFor="let class of teacherData?.classes" class="class-container">
