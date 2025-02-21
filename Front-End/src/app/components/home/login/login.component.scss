@@ -7,14 +7,11 @@
 .main-container{
   @include flexColumn();
   margin-top: 100px;
-<<<<<<< HEAD
-=======
   background-color: rgb(119, 194, 119);
   width: 50%;
   margin-left: 25%;
   padding: 6px;
   border-radius: 10px;
->>>>>>> Test-Branch
 
   h3{
     font-size: 1.2rem;
@@ -28,6 +25,7 @@
 
   .error-message{
     margin-top: 30px;
+    color: red;
   }
 
   form{
@@ -46,15 +44,9 @@
     }
 
     button{
-<<<<<<< HEAD
-      margin-top: 30px;
-      padding: 6px;
-      font-size: 1.2rem;
-=======
       margin-top: 35px;
       padding: 5px;
       font-size: 1.1rem;
->>>>>>> Test-Branch
       border-radius: 15px;
       border: 1px solid;
 
@@ -67,10 +59,6 @@
 
       &:active{
         opacity: 70%;
-<<<<<<< HEAD
-        background-color: green;
-=======
->>>>>>> Test-Branch
       }
     }
   }

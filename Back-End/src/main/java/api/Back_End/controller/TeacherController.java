@@ -31,8 +31,8 @@ public class TeacherController {
 
     @PostMapping("/check-auth")
     public ResponseEntity<?> checkAuth(@RequestParam String token) {
-        // Lógica para verificar se o token é válido
-        boolean isAuthenticated = true; // Substitua por sua lógica de autenticação
+        // Checks if the token is valid
+        boolean isAuthenticated = true; // This can be replaced with a better logic of verification
         return ResponseEntity.ok().body(Map.of("authenticated", isAuthenticated));
     }
 

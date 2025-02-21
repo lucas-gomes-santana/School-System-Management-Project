@@ -1,13 +1,13 @@
 // Front-End Interface
 
 export interface TeacherResponseDTO {
-  teacherName: string; // Nome do professor
-  cityName: string;    // Nome da cidade
-  schoolName: string;  // Nome da escola
-  classes: ClassInfo[]; // Lista de turmas
+  teacherName: string; // Name of teacher
+  cityName: string;    // Name of city
+  schoolName: string;  // Name of school
+  classes: ClassInfo[]; // Classes list
 }
 
 export interface ClassInfo {
-  className: string;   // Nome da turma
-  students: string[];  // Lista de alunos
+  className: string;   // Class name
+  students: string[];  // Studenst list
 }
