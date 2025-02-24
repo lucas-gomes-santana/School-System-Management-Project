@@ -40,7 +40,7 @@
     <pre>
     npm install
     ng serve</pre> <strong>npm install</strong>  to install necessary dependencies for Angular <br>
-    <strong>ng serve </strong> to start the start the Angular in `http://localhost:4200/`
+    <strong>ng serve </strong> to start the start the Angular application in `http://localhost:4200/`
     </li>
     <br>
     <li>Test the codes and decide what modifications you will do to make a Pull Request to the original repository.</li>
@@ -54,7 +54,7 @@
 <h4>Please follow the rules of contribution bellow to increase the chances of your Pull Request get accepted : </h4>
 
 <ul>
-    <li>Keep the code variables and the coments on english languague.</li>
+    <li>Keep the code and the coments on english languague.</li>
     <br>
     <li>If you want make modifications in database structure,open a issue in this repository to contact me.Because will be needed make changes in the API and Angular codes to.</li>
     <br>
