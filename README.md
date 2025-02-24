@@ -75,6 +75,82 @@
     <li>This README file is not complete! If you have doubts,open a issue on my GitHub and ask for me.</li>
 </ul>
 
+<br/>
+
 <hr>
 
-<h3>Tradução deste arquivo e o LICENSE para português brasileiro chegando em breve!</h3>
+<br/>
+
+<h1>Projeto Sistema Escolar (Tradução para Português)</h1>
+
+<h3>O que é este projeto?</h3>
+
+<p>A ideia deste projeto é simplesmente simular um sistema online onde o professor pode inserir presença, notas e observações sobre os alunos de uma escola. Quando um certo número de dias se passar, o sistema irá exibir as notas, o número de faltas e as observações sobre os alunos. A entrada do professor será impedida, e ele precisará inserir os dados novamente, mas de forma correta. Isso evita que qualquer pessoa acesse o sistema e sabote os dados, seja acidentalmente ou intencionalmente.</p>
+
+<hr>
+
+<h3>Por que este projeto foi feito?</h3>
+
+<p>Como um estudante do ensino médio brasileiro, vi várias vezes as reclamações dos professores sobre o sistema que minha escola utiliza. Meu interesse pelo desenvolvimento de software despertou durante meu curso técnico em Informática na escola onde estou atualmente estudando. Então, tive a ideia deste projeto para aprender mais sobre como funciona a programação full-stack.</p>
+
+<hr>
+
+<h3>Tecnologias utilizadas aqui:</h3>
+
+<ul>
+    <li>Framework Angular</li>
+    <li>Java</li>
+    <li>Framework Spring</li>
+    <li>Maven</li>
+    <li>SQL</li>
+    <li>MySQL</li>
+</ul>
+
+<hr>
+
+<h3>Como contribuir para este projeto?</h3>
+
+<ol>
+    <li>Faça um fork deste repositório, copie o link do fork e clone o projeto no seu computador.</li>
+    <br>
+    <li>Copie e cole o código SQL do arquivo na pasta Data dentro do diretório database no seu MySQL Workbench para criar o banco de dados do sistema.</li>
+    <br>
+    <li>Vá até a pasta Back-End e execute a API localizando a classe principal do Java dentro da pasta Back-End.</li>
+    <br>
+    <li>Vá até a pasta Front-End e execute os seguintes comandos em sequência: 
+    <pre>
+    npm install
+    ng serve</pre> <strong>npm install</strong> para instalar as dependências necessárias do Angular <br>
+    <strong>ng serve</strong> para iniciar a aplicação Angular em `http://localhost:4200/`
+    </li>
+    <br>
+    <li>Teste os códigos e decida quais modificações fará para criar um Pull Request para o repositório original.</li>
+</ol>
+
+<hr>
+
+<h3>Regras de Contribuição:</h3>
+
+<h4>Por favor, siga as regras de contribuição abaixo para aumentar as chances de seu Pull Request ser aceito:</h4>
+
+<ul>
+    <li>Mantenha o código e os comentários em inglês.</li>
+    <br>
+    <li>Se quiser fazer modificações na estrutura do banco de dados, abra uma issue neste repositório para entrar em contato comigo. Será necessário fazer alterações também nos códigos da API e do Angular.</li>
+    <br>
+    <li>Se criar novos componentes Angular, exclua os arquivos spec. Este não é um projeto muito complexo, então prefiro não trabalhar com testes unitários aqui. Além disso, não quero que a pasta Front-End tenha muitos arquivos.</li>
+    <br>
+    <li>Commite suas alterações primeiro na Test-Branch para garantir que os códigos criados não possuem bugs. Após esse processo, você pode fazer um Pull Request para o repositório remoto.</li>
+</ul>
+
+<hr>
+
+<h3>Avisos Finais:</h3>
+
+<ul>
+    <li>Serão aceitas apenas modificações na Test-Branch. Eu decidirei se os PRs externos podem ser mesclados na branch principal.</li>
+    <br>
+    <li>Este projeto pode ser usado para fins pessoais ou educacionais, mas o uso comercial é proibido. Leia o arquivo LICENSE para mais informações.</li>
+    <br>
+    <li>Este arquivo README não está completo! Se tiver dúvidas, abra uma issue no meu GitHub e pergunte para mim.</li>
+</ul>
