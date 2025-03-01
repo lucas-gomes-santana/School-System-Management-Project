@@ -33,7 +33,7 @@ services:
       - db_data:/var/lib/mysql
       - ./database/schema.sql:/docker-entrypoint-schemadb.d/init.sql  # Inicialização com o arquivo SQL
     ports:
-      - "3306:3306"
+      - "3307:3307"
     networks:
       - school-network
 
