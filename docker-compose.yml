@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Back-End (Java)
+  backend:
+    image: back-end  # Nome da sua imagem do Back-End
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - school-network
+
+  # Front-End (Angular)
+  frontend:
+    image: front-end  # Nome da sua imagem do Front-End
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - school-network
+
+  # Banco de Dados (MySQL)
+  db:
+    image: database  # Nome da sua imagem do Banco de Dados
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=school_system
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-schemadb.d/init.sql  # Inicialização com o arquivo SQL
+    ports:
+      - "3307:3307"
+    networks:
+      - school-network
+
+volumes:
+  db_data:
+
+networks:
+  school-network:
+    driver: bridge
