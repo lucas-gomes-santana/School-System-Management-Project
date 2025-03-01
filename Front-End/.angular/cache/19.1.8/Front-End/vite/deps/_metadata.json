@@ -3,6 +3,7 @@
   "configHash": "e2d6399e",
   "lockfileHash": "d7f62611",
   "browserHash": "97c964cb",
+  
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
