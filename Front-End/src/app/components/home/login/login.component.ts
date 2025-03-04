@@ -39,7 +39,7 @@ export class LoginComponent {
         if (error.status === 0) {
           this.errorMessage = 'Server connection error.';
         } else if (error.status === 401) {
-          this.errorMessage = 'Name or password incorrect. Insert the correct dates';
+          this.errorMessage = 'Name or password incorrect.Insert the correct dates';
         } else {
           this.errorMessage = 'Error on login attempt. Try again later.';
         }

@@ -1,4 +1,5 @@
 <section class="students-list-container">
+
   <h3>Wellcome, {{ teacherData?.teacherName }}!</h3>
 
   <div class="school-info">
@@ -7,9 +8,22 @@
   </div>
 
   <div *ngFor="let class of teacherData?.classes" class="class-container">
+    
     <h3>{{ class.className }}</h3>
+
     <ul>
-      <li *ngFor="let student of class.students">{{ student }}</li>
+
+      <li *ngFor="let student of class.students">{{ student }}
+        <div class="notes-section">
+          <p>Present <input type="radio"></p> 
+          <p>Not present <input type="radio"></p>
+        </div>
+      </li>
+
     </ul>
+    
   </div>
+
+  <button>Send Info</button>
+
 </section>

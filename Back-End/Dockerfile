@@ -1,3 +1,5 @@
+# Dockerfile da API Java
+
 # Etapa 1: Imagem base do OpenJDK
 FROM openjdk:23-jdk-slim AS build
 
@@ -19,11 +21,15 @@ FROM openjdk:23-jdk-slim
 # Defina o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copie os arquivos compilados (jar) para o contêiner
-COPY --from=build /app/target/*.jar app.jar
+# Copie o JAR compilado para o contêiner
+COPY --from=build /app/target/Back-End-0.0.1-SNAPSHOT.jar app.jar
+
+# Copie o script wait-for-it.sh para o contêiner
+COPY scripts/wait-for-it.sh /app/wait-for-it.sh
+RUN chmod +x /app/wait-for-it.sh
 
 # Exponha a porta 8080 (ou a porta que seu serviço usa)
 EXPOSE 8080
 
 # Comando para rodar o aplicativo
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["/app/wait-for-it.sh", "db:3306", "--", "java", "-jar", "app.jar"]

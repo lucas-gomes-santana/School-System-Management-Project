@@ -7,8 +7,8 @@ FROM mysql:8.0.40
 COPY schema.sql /docker-entrypoint-initdb.d/
 
 # Exponha a porta do MySQL
-EXPOSE 3306
+EXPOSE 3307
 
 # Defina as variáveis de ambiente para o MySQL
 ENV MYSQL_ROOT_PASSWORD=rootpassword
-ENV MYSQL_DATABASE=school_system
+ENV MYSQL_DATABASE=SchoolSystem

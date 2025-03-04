@@ -1,29 +1,29 @@
-# Etapa 1: Imagem base para o Angular
-FROM node:22.11.0 AS build
+# Imagem base para o Angular
+FROM node:22.11.0
 
-# Defina o diretório de trabalho
+# Cria um usuário não-root
+RUN useradd -m appuser
+
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Copie apenas os arquivos essenciais para instalar as dependências
-COPY ./package.json ./package-lock.json ./
+# Copie os arquivos do projeto
+COPY package.json package-lock.json ./
+
+# Altere o proprietário dos arquivos para o usuário não-root
+RUN chown -R appuser:appuser /app
+
+# Troque para o usuário não-root
+USER appuser
 
 # Instale as dependências
 RUN npm install
 
-# Agora copie o restante dos arquivos do projeto
+# Copie o restante dos arquivos do projeto
 COPY . .
 
-# Compile a aplicação Angular para produção
-RUN npm run build --prod
+# Exponha a porta 4200 (porta padrão do ng serve)
+EXPOSE 4200
 
-# Etapa 2: Servir a aplicação com um servidor estático (nginx)
-FROM nginx:alpine
-
-# Copie os arquivos compilados para o diretório do nginx
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Exponha a porta 80 (ou a porta configurada no nginx)
-EXPOSE 80
-
-# Comando para rodar o servidor nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para rodar o servidor de desenvolvimento do Angular
+CMD ["npm", "start"]

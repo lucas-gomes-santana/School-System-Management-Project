@@ -1,8 +1,28 @@
 /* Add global styles on this file.You can also import other styles files here */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
+
+  button{
+    padding: 7px;
+    font-size: 0.9rem;
+    border-radius: 15px;
+    border: 1px solid;
+
+    &:hover{
+      transform: scale(1.07);
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    &:active{
+      opacity: 70%;
+    }
+  }
 }
+

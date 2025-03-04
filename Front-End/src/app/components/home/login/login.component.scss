@@ -11,55 +11,46 @@
   width: 50%;
   margin-left: 25%;
   padding: 6px;
-  border-radius: 10px;
+  border-radius: 12px;
 
   h3{
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 10px;
   }
 
   label{
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .error-message{
     margin-top: 30px;
-    color: red;
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
   }
 
   form{
     @include flexColumn();
 
     .container-login{
-      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 30px;
 
       input{
         text-align: center;
         padding: 3px;
-        border-radius: 20px;
-        font-size: 1.1rem;
+        font-size: 1rem;
         border: 1px solid;
       }
     }
 
     button{
       margin-top: 35px;
-      padding: 5px;
-      font-size: 1.1rem;
-      border-radius: 15px;
-      border: 1px solid;
-
-      &:hover{
-        transform: scale(1.08);
-        transition: transform 0.3s ease-in-out;
-        cursor: pointer;
-        background-color: blue;
-      }
-
-      &:active{
-        opacity: 70%;
-      }
     }
   }
 }

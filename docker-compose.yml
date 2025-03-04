@@ -1,39 +1,44 @@
 version: '3.8'
 
 services:
+  # Banco de Dados (MySQL)
+  db:
+    image: mysql:8.0.40
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: SchoolSystem
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - school-network
+
   # Back-End (Java)
   backend:
-    image: back-end  # Nome da sua imagem do Back-End
+    build: ./Back-End
     ports:
       - "8080:8080"
     depends_on:
       - db
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/SchoolSystem
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword
+      SPRING_PROFILES_ACTIVE: prod
     networks:
       - school-network
 
   # Front-End (Angular)
   frontend:
-    image: front-end  # Nome da sua imagem do Front-End
+    build: ./Front-End # Caminho para o Dockerfile do Front-End
     ports:
-      - "80:80"
+      - "4200:4200"  # Mapeia a porta 4200 do host para a 4200 no contêiner
+    volumes:
+      - ./Front-End:/app  # Sincroniza o código Angular entre o host e o contêiner
     depends_on:
       - backend
-    networks:
-      - school-network
-
-  # Banco de Dados (MySQL)
-  db:
-    image: database  # Nome da sua imagem do Banco de Dados
-    environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
-      - MYSQL_DATABASE=school_system
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./database/schema.sql:/docker-entrypoint-schemadb.d/init.sql  # Inicialização com o arquivo SQL
-    ports:
-      - "3307:3307"
     networks:
       - school-network
 
