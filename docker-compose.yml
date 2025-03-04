@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Banco de Dados (MySQL)
+  # MySql Database
   db:
     image: mysql:8.0.40
     ports:
@@ -15,7 +15,7 @@ services:
     networks:
       - school-network
 
-  # Back-End (Java)
+  # Java API
   backend:
     build: ./Back-End
     ports:
@@ -30,11 +30,11 @@ services:
     networks:
       - school-network
 
-  # Front-End (Angular)
+  # Angular Front-End
   frontend:
-    build: ./Front-End # Caminho para o Dockerfile do Front-End
+    build: ./Front-End 
     ports:
-      - "4201:4201"  # Mapeia a porta 4200 do host para a 4200 no contêiner
+      - "4201:4201" 
     depends_on:
       - backend
     networks:
