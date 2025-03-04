@@ -30,7 +30,7 @@ public class TeacherService {
 
         Teacher teacher = optionalTeacher.get();
 
-        // Verifica se a senha está correta Check if the password is correct
+        // Check if the password is correct
         if (!teacher.getTeacherPassword().equals(password)) {
             throw new InvalidCredentialsException("The password inserted is incorrect.");
         }

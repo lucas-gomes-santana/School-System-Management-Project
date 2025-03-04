@@ -20,7 +20,7 @@ USER appuser
 RUN npm install
 
 # Copie o restante dos arquivos do projeto
-COPY . .
+COPY --chown=appuser:appuser . .
 
 # Exponha a porta 4200 (porta padrão do ng serve)
 EXPOSE 4200
