@@ -1,0 +1,20 @@
+# Ignore Maven Files
+target/
+**/target/
+**/*.jar
+**/*.war
+**/*.ear
+**/dependency-reduced-pom.xml
+
+# Ignore IDE Files
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+bin/
+*.swp
+*.swo
