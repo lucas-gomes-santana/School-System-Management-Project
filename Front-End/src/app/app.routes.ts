@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/home/login/login.component';
-import { StudentsListComponent } from './components/pages/students/students-list/students-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { StudentsListComponent } from './components/students-list/students-list.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Rota padrão

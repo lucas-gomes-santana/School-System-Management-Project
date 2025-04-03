@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TeacherResponseDTO } from '../../../../dto/teacher-response.dto';
+import { TeacherResponseDTO } from '../../dto/teacher-response.dto'; 
 
 @Component({
   selector: 'app-students-list',
