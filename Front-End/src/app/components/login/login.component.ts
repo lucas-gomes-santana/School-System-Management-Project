@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { TeacherResponseDTO } from '../../../dto/teacher-response.dto';
+import { TeacherResponseDTO } from '../../dto/teacher-response.dto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
